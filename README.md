@@ -14,3 +14,6 @@ Landing page with personal details. Literally just a simple website with built v
 
 #### Version 1.1
 Expanded landing page with JS functionality. Outline of a project page.
+
+### Final
+Hubspotesque logo with branching skill trees.
