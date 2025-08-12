@@ -17,3 +17,4 @@ Expanded landing page with JS functionality. Outline of a project page.
 
 ### Final
 Hubspotesque logo with branching skill trees.
+How about a scheduler app for time management?
