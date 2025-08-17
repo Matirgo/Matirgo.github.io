@@ -19,3 +19,4 @@ Expanded landing page with JS functionality. Outline of a project page.
 Hubspotesque logo with branching skill trees.
 How about a scheduler app for time management?
 Import photos too!
+Lowkey could do DnD characters too.
