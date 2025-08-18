@@ -18,5 +18,6 @@ Expanded landing page with JS functionality. Outline of a project page.
 ### Final
 Hubspotesque logo with branching skill trees.
 How about a scheduler app for time management?
-Import photos too!
+Import photos too about hikes and stuff.
+How about a Korean learning journal/log?
 Lowkey could do DnD characters too.
