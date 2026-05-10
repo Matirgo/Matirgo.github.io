@@ -21,3 +21,4 @@ How about a scheduler app for time management?
 Import photos too about hikes and stuff.
 How about a Korean learning journal/log?
 Lowkey could do DnD characters too.
+Include Leetcode journey lol, officially kicking off on 10/05/2026 with SQL 50.
