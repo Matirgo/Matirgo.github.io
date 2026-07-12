@@ -1,9 +1,17 @@
 /**
-    * CORE CONGFIG
+    * CORE CONFIG
     * Allows the enabling/disabling of pre-built
     * components and utilities.
 */
 
+
+/*
+    GLOBAL RESET
+
+    Applies consistent box sizing and font inheritance
+    across all elements. This prevents unexpected sizing
+    issues when adding padding and borders.
+*/
 *,
 *::before,
 *::after {
@@ -11,7 +19,14 @@
     font-family: sans-serif;
 }
 
-/* Remove default margin. */
+
+/*
+    REMOVE DEFAULT MARGINS
+
+    Browsers add default margins to headings, paragraphs,
+    and other block elements. Removing them gives us
+    complete control over layout.
+*/
 body,
 h1,
 h2,
@@ -25,38 +40,91 @@ dd {
     margin: 0;
 }
 
-/* Remove list styles on ul and ol elements with a list role. */
+
+/*
+    REMOVE DEFAULT LIST STYLING
+
+    Removes bullet points and padding from lists that
+    explicitly declare themselves as presentation lists.
+
+    Example:
+    <ul role="list">
+*/
 ul[role = "list"],
 ol[role = "list"] {
     list-style: none;
     padding: 0;
 }
 
-/* Set core root defaults. */
+
+/*
+    SMOOTH SCROLLING
+
+    Enables smooth scrolling when navigating within
+    the page using anchor links.
+
+    Disabled later if the user prefers reduced motion.
+*/
 html:focus-within {
     scroll-behavior: smooth;
 }
 
-/* Set core body defaults. */
+
+/*
+    BODY DEFAULT SETTINGS
+
+    Ensures the page fills the viewport, improves
+    text rendering consistency, and defines the
+    background environment for the Life Atlas.
+
+    overflow: hidden prevents browser scrolling,
+    allowing custom pan/zoom controls to be added later.
+*/
 body {
     min-height: 100vh;
+
     text-rendering: optimizeSpeed;
     letter-spacing: -0.01em;
+
+    overflow: hidden;
+
+    background: #020817;
+    color: white;
 }
 
-/* All elements that don't have a class get default styles. */
+
+/*
+    LINK ACCESSIBILITY
+
+    Improves readability of underlines by preventing
+    them from crossing through letters.
+*/
 a:not([class]) {
     text-decoration-skip-ink: auto;
 }
 
-/* Make images easier to work with. */
+
+/*
+    IMAGE HANDLING
+
+    Ensures images never overflow their containers
+    and behave as block elements rather than inline
+    elements with extra spacing.
+*/
+
 img,
 picture {
     max-width: 100%;
     display: block;
 }
 
-/* Inherit fonts for inputs and buttons. */
+/*
+    FORM ELEMENT FONT INHERITANCE
+
+    Browsers often apply their own fonts to inputs
+    and buttons. This ensures they match the website.
+*/
+
 input,
 button,
 textarea,
@@ -64,17 +132,156 @@ select {
     font: inherit;
 }
 
+/*
+    ACCESSIBILITY: REDUCED MOTION
+
+    Users who request reduced motion through their
+    operating system settings will not experience
+    smooth scrolling animations.
+*/
+
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
         scroll-behavior: auto;
     }
 }
 
+/*
+    FOCUS INDICATOR
+
+    Provides a visible outline when navigating
+    using a keyboard.
+
+    Important for accessibility.
+*/
+
 :focus {
     outline: 2px dashed #00ff19;
     outline-offset: 0.25rem;
 }
 
+
+/*
+    MAIN ELEMENT FOCUS
+
+    Removes the focus outline from the main container,
+    as it is not an interactive element.
+*/
 main:focus {
     outline: none;
+}
+
+
+/* ==================================================
+   LIFE ATLAS
+   ================================================== */
+
+/*
+    ATLAS CANVAS
+
+    This is the main container for the constellation.
+
+    All stars/nodes are positioned relative to this
+    element using absolute positioning.
+*/
+#atlas {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/*
+    NODE CONTAINER
+
+    Each node represents an item in the Life Atlas.
+
+    position: absolute allows nodes to be placed
+    anywhere within the atlas.
+
+    translate(-50%, -50%) centres the node on its
+    coordinates rather than positioning it from the
+    top-left corner.
+*/
+
+.node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    text-align: center;
+}
+
+/*
+    STAR VISUAL
+
+    Creates the glowing point representing a node.
+
+    The circular shape and box-shadow create the
+    appearance of a star in space.
+*/
+
+.star {
+    width: 12px;
+    height: 12px;
+    margin: 0 auto;
+
+    border-radius: 50%;
+
+    background: white;
+
+    /*
+        Multiple shadows create a layered glow effect:
+        - Inner glow
+        - Medium glow
+        - Outer atmospheric glow
+    */
+    box-shadow:
+        0 0 8px white,
+        0 0 20px white,
+        0 0 35px rgba(255,255,255,0.8);
+
+    /*
+        Allows smooth animation when the star changes
+        size or colour during hover.
+    */
+    transition: all 0.25s ease;
+}
+
+/*
+    NODE LABEL
+
+    Text displayed underneath each star.
+
+    Later this could be replaced by dynamic
+    information panels when nodes are selected.
+*/
+
+.node span {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #d7d7d7;
+}
+
+/*
+    NODE HOVER STATE
+
+    When the user hovers over a star:
+    - Increase its size
+    - Change its colour
+    - Increase its glow
+
+    This creates the feeling that the user is
+    discovering a point of interest.
+*/
+
+.node:hover .star {
+
+    transform: scale(1.5);
+
+    background: #ffd54a;
+
+    box-shadow:
+        0 0 12px #ffd54a,
+        0 0 30px #ffd54a,
+        0 0 60px #ffd54a;
 }
